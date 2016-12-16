@@ -1,0 +1,11 @@
+http://www.jb51.net/article/81693.htm   
+http://www.jb51.net/article/80393.htm
+http://blog.sina.com.cn/s/blog_5a6efa330102vctw.html
+http://blog.fens.me/nodejs-mysql-intro/
+http://blog.csdn.net/gebitan505/article/details/46346917
+
+
+http://jingyan.baidu.com/article/414eccf612e0c16b431f0a95.html
+http://cnodejs.org/getstart
+
+http://blog.fens.me/nodejs-bootstrap-paginator/   分页

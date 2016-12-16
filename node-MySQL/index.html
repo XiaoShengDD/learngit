@@ -1,0 +1,1031 @@
+<!Doctype html>
+<!--[if lt IE 7 ]><html class=ie6 lang="zh-cn"><![endif]-->
+<!--[if IE 7 ]><html class=ie7 lang="zh-cn"><![endif]-->
+<!--[if IE 8 ]><html class=ie8 lang="zh-cn"><![endif]-->
+<!--[if IE 9 ]><html class=ie9 lang="zh-cn"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><html lang="zh-cn"><![endif]-->
+
+<head>
+	<meta charset=utf-8>
+	<title>360同城帮 - 手机维修、手机回收、二手良品</title>
+	<meta name=keywords content="手机维修,自营手机维修,上门修手机,上门手机维修,自营维修,手机上门修,手机修理,修理手机,手机换屏,修修哥,自营服务,上门服务,手机回收,二手良品,二手手机,二手机">
+	<meta name=description content="360同城帮—为用户提供手机维修、平板维修、手机回收、二手良品、手机以旧换新等服务，专业的修修哥团队。支持上门维修、邮寄维修、到店维修。">
+	<link rel="stylesheet" type="text/css" href="css/v3202.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+	<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<!--<![endif]-->
+	<script>
+		var _czc = _czc || [],
+			_czc_account_id = "1259008268";
+		_czc.push(["_setAccount", _czc_account_id])
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+				var name = sessionStorage.getItem("username");
+				if(name != null){
+					$("#modal-234345").html(name);
+				}
+								
+			$("#exampleInputPassword2").mouseout(function() {
+				var username = $("#exampleInputEmail1").val();
+				var password = $("#exampleInputPassword1").val();
+				var password1 = $("#exampleInputPassword2").val();
+				if (password !== password1 || password === "") {
+					$("#exampleInputPassword1").css("border", "1px solid red");
+					$("#exampleInputPassword2").css("border", "1px solid red");
+				} else if (password === password1) {
+					var data = {
+						"uname": username,
+						"upwd": password
+					};
+					$.ajax({
+						url: '/register',
+						type: 'post',
+						data: data,
+						success: function(data, status) {
+//							if (status == 'success') {
+//								location.href = 'login';
+//							}
+							if(data){
+								alert("注册成功");
+							}else{
+								alert("注册失败");
+							}
+							
+						},
+						error: function(data, err) {
+							location.href = 'register';
+							alert("注册失败");
+						}
+					});
+				}
+			});
+			$("#login").click(function() {
+					var username = $("#username").val();
+					var password = $("#password").val();
+					$.ajax({
+						type: "post",
+						url: "http://localhost:8888/login",
+						async: true,
+						data: {
+							"username": username,
+							"password": password
+						},
+						success: function(data) {
+							if(data){
+								alert("登录成功");
+								sessionStorage.setItem("username",username);
+								location.href = "index.html";
+							
+							}else{
+								alert("登录错误");
+							}
+						},
+						error: function() {
+							console.log('error');
+							alert("登录失败");
+						}
+					});
+				});
+		})
+	</script>
+
+</head>
+
+<body class="page-index">
+	<div class=topbar id="doc-topbar">
+		<div class=in>
+			<div class="u-info l-info">
+				<ul>
+					<li> <span class="topbar-city" data-citycode="da_lian" data-cityid="">大连</span> <a class="topbar-citychange-trigger" id="changeCity">[切换城市]</a></li>
+					<li class=last><a href="#" class=item>同城帮首页</a></li>
+				</ul>
+			</div>
+			<div class="u-info">
+				<ul>
+					<li>
+
+						<!--<a href="login1.html" target="_blank">  &nbsp; 登录  &nbsp;</a>-->
+						<a id="modal-234345" href="#modal-container-234345" role="button" data-toggle="modal">&nbsp;登录&nbsp;</a>
+					</li>
+					<li>
+						<!--	<a href="register.html" target="_blank">   &nbsp;注册  &nbsp;  </a>-->
+						<a id="modal-234345" href="#modal-container-234346" role="button" data-toggle="modal">&nbsp;注册&nbsp;</a>
+
+					</li>
+					<li><a href="#" class="js-myorder-enter-qrcode-trigger item">我的订单</a></li>
+					<li><a href="购物车/购物车.html" class="item">购物车</a></li>
+					<li><span class=item style="padding:0 10px">客服电话：4000-399-360</span></li>
+					<li class="has-hot-num has-sub"> <span class=item>客户服务</span>
+						<p class=sub> <a target=_blank href="http://bang.360.cn/help/">帮助中心</a> <a target=_blank href="/shangmen/pay">维修付款</a></p>
+					</li>
+					<li><a class=item href="http://bbs.360.cn/forum-2617-1.html" target=_blank>论坛</a></li>
+					<li class=last><a class="item doc-topbar-tousujianyi" style="color:#F00;padding:0 0 0 10px" href="#">投诉建议</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-container-234345" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">登录</h4>
+				</div>
+				<div class="modal-body">
+					<!--登录部分 -->
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-md-6 column">
+								<!--<form role="form">-->
+								<div class="form-group">
+									<label>用户名</label>
+									<input type="text" class="form-control" id="username" name="username" value="" />
+								</div>
+								<div class="form-group">
+									<label>密码</label>
+									<input type="password" class="form-control" id="password" name="username" value="" />
+								</div>
+
+								<button type="submit" class="btn btn-default" id="login">登录</button>
+								<!--</form>-->
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-container-234346" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+								注册
+							</h4>
+				</div>
+				<div class="modal-body">
+					<!--注册部分-->
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-md-6 column">
+								<!--<form role="form">-->
+								<div class="form-group">
+									<label>用户名</label>
+									<input type="text" class="form-control" id="exampleInputEmail1" />
+								</div>
+								<div class="form-group">
+									<label>密码</label>
+									<input type="password" class="form-control" id="exampleInputPassword1" value="" />
+								</div>
+								<div class="form-group">
+									<label>验证密码</label>
+									<input type="password" class="form-control" id="exampleInputPassword2" value="" />
+								</div>
+								<button type="submit" class="btn btn-default" id="registerSubmit">注册</button>
+								<!--</form>-->
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="index-top-banner">
+		<div class="index-top-banner-inner row">
+			<div class="col-left-fixed">
+				<a id=HeaderLogo class=logo href="/?from=index"></a>
+			</div>
+			<div class="col-right">
+				<ul class="top-banner-cate">
+					<li> <a href="/liangpin?from=index" target=_blank title="二手良品">二手良品<span class="hot-label"></span></a></li>
+					<li> <a href="/huishou?from=index" target=_blank title="手机回收">手机回收</a></li>
+					<li> <a href="/shangmen/mobile?from=index" target=_blank title="手机维修">手机维修</a></li>
+					<li> <a href="/shangmen/pc?from=index" target=_blank title="电脑维修">电脑维修</a></li>
+					<li> <a href="/huanxin?from=index" target=_blank title="以旧换新">以旧换新</a></li>
+					<li class=last> <a href="/zu?from=index" target=_blank title="手机租用">手机租用</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="top-cate">
+		<div class="cate-list">
+			<ul class="cate-list-main" id="cate_list_main">
+				<li class="item pngfix"><a class="citem-xsj pngfix" href="/shangmen/mobile?from=index" target=_blank>修手机/Pad</a></li>
+				<li class="item pngfix"><a class="citem-xdn pngfix" href="/shangmen/pc?from=index" target=_blank>修电脑</a></li>
+				<li class="item pngfix"><a class="citem-hs pngfix" href="/huishou?from=index" target=_blank>卖手机</a></li>
+				<li class="item pngfix"><a class="citem-lp pngfix" href="/liangpin?from=index" target=_blank>买二手机</a></li>
+			</ul>
+			<div class="cate-list-sub" style="width: 0px; height: 433px; display: none;">
+				<div class="cate-list-sub-inner">
+					<div class="sub-item for-citem-xsj" id="ForCitemXSJ" style="display: none;">
+						<div class="row">
+							<div class="col-left-fixed left-tit">屏幕 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=10&amp;from=index" target="_blank">屏碎，但显示正常</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=50&amp;from=index" target="_blank">屏幕不显示或花屏</a>								<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=51&amp;from=index" target="_blank">屏幕触摸失灵</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=16&amp;from=index" target="_blank">Pad更换屏幕</a>								</div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">电池/充电/开机 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=12&amp;from=index" target="_blank">电池问题</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=42&amp;from=index" target="_blank">不开机</a>								<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=27&amp;from=index" target="_blank">充电(连接)问题</a> </div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">按键 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=17&amp;from=index" target="_blank">开关机键失灵</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=18&amp;from=index" target="_blank">Home键失灵</a>								<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=19&amp;from=index" target="_blank">音量键失灵</a> </div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">声音/震动 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=25&amp;from=index" target="_blank">听筒问题</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=49&amp;from=index" target="_blank">麦克风问题</a>								<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=26&amp;from=index" target="_blank">外放扬声器问题</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=48&amp;from=index" target="_blank">耳机插口故障</a>								<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=29&amp;from=index" target="_blank">震动功能失效</a> </div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">拍照/录像 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=23&amp;from=index" target="_blank">后摄像头无法拍照</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=24&amp;from=index" target="_blank">前摄像头拍照故障</a>								</div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">外壳/边框 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=28&amp;from=index" target="_blank">中框变形</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=53&amp;from=index" target="_blank">手机换彩壳</a>								</div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">进水入液/主板故障 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=20&amp;from=index" target="_blank">进水入液</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=21&amp;from=index" target="_blank">手机主板故障</a>								</div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">其他故障 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=52&amp;from=index" target="_blank">软件升级/刷机</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=22&amp;from=index" target="_blank">WiFi功能故障</a>								</div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">个性化服务 <span>&gt;</span></div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=44&amp;from=index" target="_blank">点亮iPhone logo</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=45&amp;from=index" target="_blank">蓝光护眼钢化膜</a>								<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=46&amp;from=index" target="_blank">极透高清钢化膜</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=47&amp;from=index" target="_blank">爱机深度清洁</a>								<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=53&amp;from=index" target="_blank">手机换彩壳</a> </div>
+						</div>
+					</div>
+					<div class="sub-item for-citem-xdn" id="ForCitemXDN" style="display: none;">
+						<div class="row">
+							<div class="col-left-fixed left-tit">热门问题：</div>
+							<div class="col-right right-cnt"> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=14&amp;from=index" target="_blank">系统重装</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=13&amp;from=index" target="_blank">电脑清灰</a>								<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=56&amp;from=index" target="_blank">VR移机/安装</a> <a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;s_type=youji&amp;fault_id=11&amp;from=index" target="_blank">数据恢复</a>								<a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E7%B3%BB%E7%BB%9F%E6%95%85%E9%9A%9C%E4%BF%AE%E5%A4%8D&amp;from=index" target="_blank">系统故障修复</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85&amp;from=index"
+								target="_blank">驱动安装</a> </div>
+						</div>
+						<div class="row">
+							<div class="col-left-fixed left-tit">其他问题：</div>
+							<div class="col-right right-cnt"> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E6%B8%B8%E6%88%8F%E5%8A%A0%E9%80%9F&amp;from=index" target="_blank">游戏加速</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E5%BC%80%E6%9C%BA%E5%8A%A0%E9%80%9F&amp;from=index"
+								target="_blank">开机加速</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E7%BD%91%E9%80%9F%E4%BC%98%E5%8C%96&amp;from=index" target="_blank">网速优化</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E8%93%9D%E5%B1%8F%E6%AD%BB%E6%9C%BA&amp;from=index"
+								target="_blank">蓝屏死机</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E7%94%B5%E8%84%91%E6%B2%A1%E5%A3%B0%E9%9F%B3&amp;from=index" target="_blank">电脑没声音</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E8%B7%AF%E7%94%B1%E5%99%A8%E8%B0%83%E8%AF%95&amp;from=index"
+								target="_blank">路由器调试</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91&amp;from=index" target="_blank">无法上网</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E5%AE%B6%E5%BA%AD%E5%B1%80%E5%9F%9F%E7%BD%91&amp;from=index"
+								target="_blank">家庭局域网</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E6%9B%B4%E6%8D%A2%E9%A3%8E%E6%89%87&amp;from=index" target="_blank">更换风扇</a> <a href="/search/?_isfix=0&amp;ie=utf-8&amp;f=tcb&amp;stype=0&amp;keyword=%E7%97%85%E6%AF%92%E6%9F%A5%E6%9D%80&amp;from=index"
+								target="_blank">病毒查杀</a> </div>
+						</div>
+					</div>
+					<div class="sub-item for-citem-hs" id="ForCitemHS" style="display: none;"> <a href="/huishou/?from=index#brand=10" target="_blank">苹果</a> <a href="/huishou/?from=index#brand=0" target="_blank">三星</a> <a href="/huishou/?from=index#brand=13" target="_blank">小米</a> <a href="/huishou/?from=index#brand=1" target="_blank">华为</a>						<a href="/huishou/?from=index#brand=9" target="_blank">步步高</a> <a href="/huishou/?from=index#brand=7" target="_blank">OPPO</a> <a href="/huishou/?from=index#brand=2" target="_blank">HTC</a> <a href="/huishou/?from=index#brand=20" target="_blank">魅族</a>						<a href="/huishou/?from=index#brand=8" target="_blank">索尼</a> <a href="/huishou/?from=index#brand=3" target="_blank">联想</a> <a href="/huishou/?from=index#brand=4" target="_blank">酷派</a> <a href="/huishou/?from=index#brand=6" target="_blank">中兴</a>						<a href="/huishou/?from=index#brand=5" target="_blank">诺基亚</a> <a href="/huishou/?from=index#brand=14" target="_blank">朵唯</a> <a href="/huishou/?from=index#brand=26" target="_blank">乐视</a> <a href="/huishou/?from=index#brand=15" target="_blank">LG</a>						<a href="/huishou/?from=index#brand=16" target="_blank">黑莓</a> <a href="/huishou/?from=index#brand=12" target="_blank">摩托罗拉</a> <a href="/huishou/?from=index#brand=27" target="_blank">360手机</a> <a href="/huishou/?from=index#brand=25" target="_blank">微软</a>						<a href="/huishou/?from=index#brand=24" target="_blank">美图秀秀</a> <a href="/huishou/?from=index#brand=23" target="_blank">一加</a> <a href="/huishou/?from=index#brand=22" target="_blank">锤子</a> <a href="/huishou/?from=index#brand=11" target="_blank">金立</a>						<a href="/huishou/?from=index#brand=17" target="_blank">TCL</a> <a href="/huishou/?from=index#brand=29" target="_blank">小辣椒</a> </div>
+					<div class="sub-item for-citem-lp" id="ForCitemLP" style="display: none;"> <a href="/liangpin/search?brand_id=1&amp;from=index" target="_blank">三星</a> <a href="/liangpin/search?brand_id=2&amp;from=index" target="_blank">苹果</a> <a href="/liangpin/search?brand_id=3&amp;from=index" target="_blank">小米</a> <a href="/liangpin/search?brand_id=4&amp;from=index"
+						target="_blank">华为</a> <a href="/liangpin/search?brand_id=5&amp;from=index" target="_blank">HTC</a> <a href="/liangpin/search?brand_id=6&amp;from=index" target="_blank">诺基亚</a> <a href="/liangpin/search?brand_id=7&amp;from=index" target="_blank">酷派</a>						<a href="/liangpin/search?brand_id=8&amp;from=index" target="_blank">索尼</a> <a href="/liangpin/search?brand_id=9&amp;from=index" target="_blank">魅族</a> <a href="/liangpin/search?brand_id=11&amp;from=index" target="_blank">联想</a> <a href="/liangpin/search?brand_id=12&amp;from=index"
+						target="_blank">金立</a> <a href="/liangpin/search?brand_id=13&amp;from=index" target="_blank">努比亚</a> <a href="/liangpin/search?brand_id=15&amp;from=index" target="_blank">朵唯</a> <a href="/liangpin/search?brand_id=16&amp;from=index" target="_blank">一加</a>						<a href="/liangpin/search?brand_id=21&amp;from=index" target="_blank">vivo</a> <a href="/liangpin/search?brand_id=22&amp;from=index" target="_blank">oppo</a> <a href="/liangpin/search?brand_id=24&amp;from=index" target="_blank">乐视</a> <a href="/liangpin/search?brand_id=27&amp;from=index"
+						target="_blank">360手机</a> <a href="/liangpin/search?brand_id=28&amp;from=index" target="_blank">美图秀秀</a> <a href="/liangpin/search?brand_id=48&amp;from=index" target="_blank">微软</a> <a href="/liangpin/search?brand_id=50&amp;from=index" target="_blank">戴尔</a>						</div>
+				</div> <span class="arrow-left pngfix" style="top: 36px;"></span></div>
+		</div>
+		<div class="top-cate-slide">
+			<div class="top-cate-slide-inner js-top-cate-slide-inner">
+				<div class="slide-inner">
+					<div class="slide-list">
+						<div class="slide-item">
+							<a href="http://bang.360.cn/liangpin/erhuo" target=_blank><img src="images/t01ccbc9f705c191c18.png"></a>
+						</div>
+						<div class="slide-item"> <img src="images/t01319afabdfc54594b.png"> </div>
+						<div class="slide-item">
+							<a href="http://bang.360.cn/xiu/battery" target=_blank><img src="images/t0104b2b5e6d87d4c1f.jpg"></a>
+						</div>
+						<div class="slide-item">
+							<a href="http://bang.360.cn/liangpin/product?product_id=20092" target=_blank><img src="images/t01f53d77de8e4a2965.png"></a>
+						</div>
+					</div>
+				</div>
+				<div class="slide-ctrl"></div>
+			</div>
+		</div>
+		<div class="top-cate-small-slide">
+			<div class="top-cate-small-slide-inner">
+				<div class=item>
+					<a href="/shangmen/order?f_type=mobile&amp;yy_type=2&amp;fault_id=10&amp;showdetail=1&amp;from=index" target=_blank> <img src="images/t01aad5c130b8653368.jpg"> </a>
+				</div>
+				<div class=item>
+					<a href="http://www.51tcb.cn/xiu/battery?from=index" target=_blank> <img src="images/t01dc8f9631026e7e17.jpg"> </a>
+				</div>
+				<div class=item>
+					<a href="/360shouji?from=index" target=_blank> <img src="images/t012b0c32614bcdc13c.jpg"> </a>
+				</div>
+				<div class=item>
+					<a href="/liangpin/shengji?from=index" target=_blank> <img src="images/t01fc1fd0e5522663ba.jpg"> </a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id=JsIndexXsjCateTpl>
+		<div class="row">
+			<div class="col-left-fixed left-tit">热门问题：</div>
+			<div class="col-right right-cnt"> {for(var i=0;i
+				<$hot.length;i++)} {js var item=$hot[i]} <a href="{tcb.setUrl(item['url'], '" from ":"index "')}"target="_blank">{item['name']}</a> {/for} </div>
+		</div>
+		<div class="row">
+			<div class="col-left-fixed left-tit">其他问题：</div>
+			<div class="col-right right-cnt"> {for(var j=0;j
+				<$other.length;j++)} {js var item=$other[j]} <a href="{tcb.setUrl(item['url'], '" from ":"index "')}"target="_blank">{item['name']}</a> {/for} </div>
+		</div>
+	</script>
+	<script type="text/html" id=JsIndexXsjCate2Tpl>{for(var i=0;i
+		<$list.length;i++)} {js var item=$list[i]} <div class="row">
+			<div class="col-left-fixed left-tit">{item['name']} <span>></span></div>
+			<div class="col-right right-cnt"> {js var sub_list=item['list']} {if(sub_list&&sub_list.length)} {for(var j=0; j
+				<sub_list.length; j++)} <a href="/shangmen/order?f_type=mobile&yy_type=2&s_type=youji&fault_id={sub_list[j]['id']}&from=index" target="_blank">{sub_list[j]['name']}</a> {/for} {/if} </div>
+			</div> {/for}</script>
+	<script type="text/html" id=JsIndexXdnCateTpl>
+		<div class="row">
+			<div class="col-left-fixed left-tit">热门问题：</div>
+			<div class="col-right right-cnt"> {for(var i=0;i
+				<$hot.length;i++)} {js var item=$hot[i]} <a href="{tcb.setUrl(item['url'], '" from ":"index "')}"target="_blank">{item['name']}</a> {/for} </div>
+		</div>
+		<div class="row">
+			<div class="col-left-fixed left-tit">其他问题：</div>
+			<div class="col-right right-cnt"> {for(var j=0;j
+				<$other.length;j++)} {js var item=$other[j]} <a href="{tcb.setUrl(item['url'], '" from ":"index "')}"target="_blank">{item['name']}</a> {/for} </div>
+		</div>
+	</script>
+	<script type="text/html" id=JsIndexHsCateTpl>{for(var j=0;j
+		<$brand.length;j++)} {js var item=$brand[j]} <a href="/huishou/?from=index#brand={item['id']}" target="_blank">{item['name']}</a> {/for}</script>
+	<script type="text/html" id=JsIndexLpCateTpl>{for(var j=0;j
+		<$brand.length;j++)} {js var item=$brand[j]} <a href="/liangpin/search?brand_id={item['id']}&from=index" target="_blank">{item['name']}</a> {/for}</script>
+	<div class="section-block hot-hs-product">
+		<div class=tit>
+			<div class="tit-inner">
+				<h2>热门手机回收</h2> <a class="go-more" href="/huishou?from=index" target=_blank>查看更多</a></div>
+		</div>
+		<div class=cnt>
+			<div class="cnt-inner row">
+				<div class="col-left-fixed cnt-left"><a href="/huishou?from=index" target=_blank>&nbsp;</a></div>
+				<div class="col-right cnt-right">
+					<ul class="js-hot-hs-list" id=JsHotHsList>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01068fe5e76aa7e910.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6</div>
+							</a>
+						</li>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01068fe5e76aa7e910.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6</div>
+							</a>
+						</li>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01068fe5e76aa7e910.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6</div>
+							</a>
+						</li>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01068fe5e76aa7e910.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6</div>
+							</a>
+						</li>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01068fe5e76aa7e910.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id=JsIndexHuishouProductTpl>{for(var i=0;i
+		<$product_list.length;i++)} {js var item=$product_list[i]} <li class="item{if(i==0)} item-first{/if}">
+			<a href="/huishou?from=index#brand={item['brand_id']}&pid={item['model_id']}" target="_blank">
+				<div class="p-img"><img src="{item['img_url']}"></div>
+				<div class="p-name">{item.model_alis}</div>
+			</a> {/for}</script>
+	<div class="section-block hot-lp-product">
+		<div class=tit>
+			<div class="tit-inner">
+				<h2>二手良品精选</h2> <a class="go-more" href="/liangpin/search?from=index" target=_blank>查看更多</a></div>
+		</div>
+		<div class=cnt>
+			<div class="cnt-inner row">
+				<div class="col-left-fixed cnt-left"><a href="/liangpin?from=index" target=_blank>&nbsp;</a></div>
+				<div class="col-right cnt-right">
+					<ul class="js-hot-lp-list" id=JsHotLpList>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01424493481b305dfc.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6S plus</div>
+								<div class="p-price">￥4099</div>
+							</a>
+						</li>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01424493481b305dfc.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6S plus</div>
+								<div class="p-price">￥4099</div>
+							</a>
+						</li>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01424493481b305dfc.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6S plus</div>
+								<div class="p-price">￥4099</div>
+							</a>
+						</li>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01424493481b305dfc.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6S plus</div>
+								<div class="p-price">￥4099</div>
+							</a>
+						</li>
+						<li class="item item-first">
+							<a href="#">
+								<div class="p-img">
+									<img src="images/t01424493481b305dfc.jpg" />
+								</div>
+								<div class="p-name">苹果iPhone 6S plus</div>
+								<div class="p-price">￥4099</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id=JsIndexLiangpinProductTpl>{for(var i=0;i
+		<$product_list.length;i++)} {js var item=$product_list[i]} {js var thum_img='images/t01eca8cee9950a3c83.png' } {if(typeof item.thum_img=='object' && item[ 'thum_img'][ 'big'])} {js thum_img=item.thum_img[ 'big']} {/if} <li class="item{if(i==0)} item-first{/if}">
+			<a href="/liangpin/product?product_id={item.product_id}&from=index" target="_blank">
+				<div class="p-img"><img src="{thum_img}"></div>
+				<div class="p-name">{item.brand_name} {item.model_name}</div>
+				<div class="p-price">￥{item.price}</div>
+			</a> {/for}</script>
+	<div class="section-block index-shop-list">
+		<div class=tit>
+			<div class="tit-inner">
+				<h2>到店维修</h2></div>
+		</div>
+		<div class=cnt>
+			<div class="cnt-inner row">
+				<div class="col-left-fixed cnt-left">
+					<div class="shop-list-extend-filter">
+						<div class=row>
+							<div class="col-left-fixed">
+								<div class="area-select-wrap" id=JsAreaSelectWrap>
+									<div class="area-sel sel-city citypanel_trigger mr-10" code="da_lian"> <span class="sel-txt" data-code="da_lian">大连</span> <span class="icon icon-arrow pngfix"></span></div>
+								</div>
+							</div>
+							<div class="col-right">
+								<div class="addr-search-box">
+									<form class="addr-search" id=addrSearchForm>
+										<input class="addr-ipt" name=addr data-default="输入您的位置查找附近的商家" value="">
+										<input class="addr-btn" type=submit value="搜索"> </form> <span class="addr-search-err">抱歉，没有找到您输入的位置，您可以试试其他地址</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="shop-list-wrap">
+						<div class="shop-list-filter clearfix">
+							<ul class="sort-type">
+								<li class="active li-first"><a hidefocus=true data-type="" href="#" class="sort-default"><span class="icon icon-window"></span> 默认排序</a>
+									<li><a hidefocus=true data-type=1 href="#" class="sort-sale"><span class="icon icon-dl"></span> 按成交量</a>
+										<li><a hidefocus=true data-type=3 href="#" class="sort-pop"><span class="icon icon-thumb"></span> 按人气</a></ul>
+							<div class="filter-check">
+								<label>
+									<input class=chkbox type=checkbox name=is_bzj>先行赔付</label>
+							</div>
+							<div class=extra style="display:block"><a hidefocus=true href="#" class="btn btn-mode-map">地图模式</a></div>
+						</div>
+						<!--<div class="shop-list" id="JsShopList">        <div class="list-item"> <div class="pic"> <a target="_blank" href="http://16175605.bang.360.cn/?from=index"><img src="http://p1.qhimg.com/edr/140__140/ss/30_105/t01d069a31e337772f6.gif" width="70" height="70"></a></div> <div class="cont"> <h3> <a target="_blank" title="大连松杨电脑维修中心" href="http://16175605.bang.360.cn/?from=index">大连松杨电脑维修中心</a> <div class="shop-grade">店铺等级：<a href="/c/help/#cont101" target="_blank" title="11级"><span class="icon icon-dj icon-dj-2"></span><span class="icon icon-dj icon-dj-2"></span><span class="icon icon-dj icon-dj-2"></span></a></div> </h3> <div class="desc">主营：系统安装、笔记本除尘清灰、手机维修、上门维修</div> <div class="addr" title="大连中山海源电子城正门门头专营店。热线：18641108834">地址：大连中山海源电子城正门门头专营店。热线：18641108834</div>  <div class="shop-score"> <div class="shop-item-pf"><span title="出现服务纠纷，360同城帮先行赔付您支付的全额" class="icon icon-xxpf"></span>先行赔付</div> <div class="shop-rz"><span class="icon icon-v-us pngfix" title="同城帮认证"></span>同城帮认证</div> <div class="shop-item-rq"><span>人气：24740次浏览</span></div></div>  <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="http://16175605.bang.360.cn/?from=index">进入店铺</a></div></div>         <div class="list-item"> <div class="pic"> <a target="_blank" href="http://2889353.bang.360.cn/?from=index"><img src="http://p2.qhimg.com/edr/140__140/ss/30_105/t01d393b539d5466914.gif" width="70" height="70"></a></div> <div class="cont"> <h3> <a target="_blank" title="鋐蕴电脑维修" href="http://2889353.bang.360.cn/?from=index">鋐蕴电脑维修</a> <div class="shop-grade">店铺等级：<a href="/c/help/#cont101" target="_blank" title="4级"><span class="icon icon-dj icon-dj-1"></span><span class="icon icon-dj icon-dj-1"></span><span class="icon icon-dj icon-dj-1"></span><span class="icon icon-dj icon-dj-1"></span></a></div> </h3> <div class="desc">主营：电脑维修，电脑周边配件，系统维护，维修台式机，网络安装</div> <div class="addr" title="大连沙河口区连山街8号（533、528、37路龙江路车站下车即是）">地址：大连沙河口区连山街8号（533、528、37路龙江路车站下车即是）</div>  <div class="shop-score"> <div class="shop-item-pf"><span title="出现服务纠纷，360同城帮先行赔付您支付的全额" class="icon icon-xxpf"></span>先行赔付</div> <div class="shop-rz"><span class="icon icon-v-us pngfix" title="同城帮认证"></span>同城帮认证</div> <div class="shop-item-rq"><span>人气：19777次浏览</span></div></div>  <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="http://2889353.bang.360.cn/?from=index">进入店铺</a></div></div>         <div class="list-item"> <div class="pic"> <a target="_blank" href="http://39246970.bang.360.cn/?from=index"><img src="http://p1.qhimg.com/edr/140__140/ss/30_105/t01d069a31e337772f6.gif" width="70" height="70"></a></div> <div class="cont"> <h3> <a target="_blank" title="大连无忧科技有限公司" href="http://39246970.bang.360.cn/?from=index">大连无忧科技有限公司</a> <div class="shop-grade">店铺等级：<a href="/c/help/#cont101" target="_blank" title="6级"><span class="icon icon-dj icon-dj-2"></span></a></div> </h3> <div class="desc">主营：电脑专业维修，重装系统，系统升级，手机维修，清灰维护，监控安防，专业</div> <div class="addr" title="大连大连开发区轻轨电子商城1F-1B20">地址：大连大连开发区轻轨电子商城1F-1B20</div>  <div class="shop-score"> <div class="shop-item-pf">&nbsp;</div> <div class="shop-rz">&nbsp;</div> <div class="shop-item-rq"><span>人气：12604次浏览</span></div></div>  <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="http://39246970.bang.360.cn/?from=index">进入店铺</a></div></div>         <div class="list-item"> <div class="pic"> <a target="_blank" href="http://115534482.bang.360.cn/?from=index"><img src="http://p0.qhimg.com/edr/140__140/ss/30_105/t01ed42a32f5e4ad4f5.jpg" width="70" height="70"></a></div> <div class="cont"> <h3> <a target="_blank" title="大连市沙河口区鑫展讯电子商行" href="http://115534482.bang.360.cn/?from=index">大连市沙河口区鑫展讯电子商行</a> <div class="shop-grade">店铺等级：<a href="/c/help/#cont101" target="_blank" title="2级"><span class="icon icon-dj icon-dj-1"></span><span class="icon icon-dj icon-dj-1"></span></a></div> </h3> <div class="desc">主营：笔记本电脑维修、苹果系列产品维修</div> <div class="addr" title="大连中山火车站渤海明珠大酒店东侧普照电子城3楼50号">地址：大连中山火车站渤海明珠大酒店东侧普照电子城3楼50号</div>  <div class="shop-score"> <div class="shop-item-pf">&nbsp;</div> <div class="shop-rz">&nbsp;</div> <div class="shop-item-rq"><span>人气：10197次浏览</span></div></div>  <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="http://115534482.bang.360.cn/?from=index">进入店铺</a></div></div>           <div class="list-item list-item-last"> <div class="pic"> <a target="_blank" href="http://1561867640.bang.360.cn/?from=index"><img src="http://p8.qhimg.com/edr/140__140/ss/30_105/t01d5e9cb042a50ba24.jpg" width="70" height="70"></a></div> <div class="cont"> <h3> <a target="_blank" title="大连泉水区域维修电脑" href="http://1561867640.bang.360.cn/?from=index">大连泉水区域维修电脑</a> <div class="shop-grade">店铺等级：<a href="/c/help/#cont101" target="_blank" title="2级"><span class="icon icon-dj icon-dj-1"></span><span class="icon icon-dj icon-dj-1"></span></a></div> </h3> <div class="desc">主营：电脑维修、系统安装、有线无线网络安装调试；监控、LED维修、手机刷机</div> <div class="addr" title="大连甘井子区泉水E3区32号楼(516路富士庄园站)">地址：大连甘井子区泉水E3区32号楼(516路富士庄园站)</div>  <div class="shop-score"> <div class="shop-item-pf">&nbsp;</div> <div class="shop-rz">&nbsp;</div> <div class="shop-item-rq"><span>人气：10034次浏览</span></div></div>  <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="http://1561867640.bang.360.cn/?from=index">进入店铺</a></div></div>  </div>-->
+						<div class="shop-list-pagination pagination">
+							<div class=pages></div>
+						</div>
+					</div>
+					<script type="text/html" id=JsShopListTpl>{js var no_v = 0} {for(var i=0,len =$shop_data.length;i
+						< len;i++)} {js var item=$shop_data[i]} {if(item.recommend=='1' )} <div id="recommendTips" class="list-item list-item-last" style="background:#FFFAE4;height:78px;text-align:center;border:1px solid #f4f4f4;margin:-1px 0 0;">
+							{if(i==0)}
+							<div style="padding-top:17px;height:22px">抱歉，没有找到该地区相关商家。</div>
+							<div style="color:red;height:22px;">以下是我们为您找到与您相同城市的商家</div> {else}
+							<div style="color:red;height:22px;padding-top:23px;">以下是我们为您找到与您相同城市的商家</div> {/if} </div> {/if} {js var last_class = ''} {if(i==len-1)} {js last_class = ' list-item-last'} {/if} {if(item.mer_type!='crawl')} {if($shop_data[i+1] && $shop_data[i+1]['mer_type']=='crawl')} {js last_class = ' list-item-last'}
+				{/if}
+				<div class="list-item{last_class}">
+					<div class="pic">
+						<a target="_blank" href="{item.shop_addr}"><img src="{item.shop_ico}" width="70" height="70"></a>
+					</div>
+					<div class="cont">
+						<h3><a target="_blank"title="{item.shop_name}"href="{item.shop_addr}">{item.shop_name.subByte(30,'...').encode4Html()}</a>{if(item.mer_type=='enterprise'
+                        || item.mer_type=='person')}&nbsp;<span style="font-size:12px;font-weight:normal;color:#999">{tcb.showIconV( item.jiameng_status, true)}</span>&nbsp;&nbsp;      {/if} </h3>
+						<div class="desc">主营：{item.main.subByte(999,'...')}</div>
+						<div class="addr" title="{item.addr_detail}">地址：{item.addr_detail.subByte(999,'...').encode4Html()}</div> <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="{item.shop_addr}">进入店铺</a> {if (item.mer_type!='pinpai')}
+						<div class="shop-score">
+							<div class="shop-item-pf">{if(item.is_bzj=='1')}<span title="出现服务纠纷，360同城帮先行赔付您支付的全额" class="icon icon-xxpf"></span>先行赔付{else}&nbsp;{/if}</div>
+							<div class="shop-grade">店铺等级：<a href="/c/help/#cont101" target="_blank" title="{item.level}级">{tcb.showShopGrade(item.grade)}</a></div>
+							<div class="shop-item-rq">{if (item.sort_type==1)}<span>成交量：{item.order_count}次成交</span>{else}<span>人气：{item.shop_visit}次浏览</span>{/if}</div>
+						</div> {/if} </div>
+				</div> {else} {js no_v++} {if (no_v==1)}
+				<div class="no-valid-warn"><span class="ico-alert"></span>以下商家暂时未经过360同城帮的审核，请您仔细确认交易的维修效果后再付款</div>
+				<div class="list-item{last_class}">
+					<div class="pic">
+						<a target="_blank" href="{item.shop_addr}"><img src="{item.shop_ico}" width="70" height="70"></a>
+					</div>
+					<div class="cont">
+						<h3> <a target="_blank"title="{item.shop_name}"href="{item.shop_addr}">{item.shop_name.subByte(30,'...').encode4Html()}</a>&nbsp; <span class="no-valid-txt">认证中</span></h3>
+						<div class="desc">主营：{item.main.subByte(999,'...')}</div>
+						<div class="addr" title="{item.addr_detail}">地址：{item.addr_detail.subByte(999,'...').encode4Html()}</div> <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="{item.shop_addr}">进入店铺</a></div>
+				</div> {else}
+				<div class="list-item{last_class}">
+					<div class="pic">
+						<a target="_blank" href="{item.shop_addr}"><img src="{item.shop_ico}" width="70" height="70"></a>
+					</div>
+					<div class="cont">
+						<h3> <a target="_blank"title="{item.shop_name}"href="{item.shop_addr}">{item.shop_name.subByte(30,'...').encode4Html()}</a>&nbsp; <span class="no-valid-txt">认证中</span></h3>
+						<div class="desc">主营：{item.main.subByte(999,'...')}</div>
+						<div class="addr" title="{item.addr_detail}">地址：{item.addr_detail.subByte(999,'...').encode4Html()}</div> <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="{item.shop_addr}">进入店铺</a></div>
+				</div> {/if} {/if} {/for}</script>
+				<script type="text/html" id=JsShopList2Tpl>{js var no_v = 0} {for(var i=0,len =$shop_data.length;i
+					< len;i++)} {js var item=$shop_data[i]} {if(item.recommend=='1' )} <div id="recommendTips" class="list-item list-item-last" style="background:#FFFAE4;height:78px;text-align:center;border:1px solid #f4f4f4;margin:-1px 0 0;">
+						{if(i==0)}
+						<div style="padding-top:17px;height:22px">抱歉，没有找到该地区相关商家。</div>
+						<div style="color:red;height:22px;">以下是我们为您找到与您相同城市的商家</div> {else}
+						<div style="color:red;height:22px;padding-top:23px;">以下是我们为您找到与您相同城市的商家</div> {/if} </div> {/if} {js var last_class = ''} {if(i==len-1)} {js last_class = ' list-item-last'} {/if} {if(item.mer_type!='crawl')} {if($shop_data[i+1] && $shop_data[i+1]['mer_type']=='crawl')} {js last_class = ' list-item-last'}
+			{/if}
+			<div class="list-item{last_class}">
+				<div class="pic">
+					<a target="_blank" href="{item.shop_addr}"><img src="{item.shop_ico}" width="70" height="70"></a>
+				</div>
+				<div class="cont">
+					<h3> <a target="_blank"title="{item.shop_name}"href="{item.shop_addr}">{item.shop_name.subByte(30,'...').encode4Html()}</a> {if (item.mer_type!='pinpai')}<div class="shop-grade">店铺等级：<a href="/c/help/#cont101"target="_blank"title="{item.level}级">{tcb.showShopGrade(item.grade)}</a></div>{/if} </h3>
+					<div class="desc">主营：{item.main.subByte(999,'...')}</div>
+					<div class="addr" title="{item.addr_detail}">地址：{item.addr_detail.subByte(999,'...').encode4Html()}</div> {if (item.mer_type!='pinpai')}
+					<div class="shop-score">
+						<div class="shop-item-pf">{if(item.is_bzj=='1')}<span title="出现服务纠纷，360同城帮先行赔付您支付的全额" class="icon icon-xxpf"></span>先行赔付{else}&nbsp;{/if}</div>
+						<div class="shop-rz">{if((item.mer_type=='enterprise'|| item.mer_type=='person')&&item.jiameng_status=='40')}{tcb.showIconV( item.jiameng_status, false)}同城帮认证{else}&nbsp;{/if}</div>
+						<div class="shop-item-rq">{if (item.sort_type==1)}<span>成交量：{item.order_count}次成交</span>{else}<span>人气：{item.shop_visit}次浏览</span>{/if}</div>
+					</div> {/if} <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="{item.shop_addr}">进入店铺</a></div>
+			</div> {else} {js no_v++} {if (no_v==1)}
+			<div class="no-valid-warn"><span class="ico-alert"></span>以下商家暂时未经过360同城帮的审核，请您仔细确认交易的维修效果后再付款</div>
+			<div class="list-item{last_class}">
+				<div class="pic">
+					<a target="_blank" href="{item.shop_addr}"><img src="{item.shop_ico}" width="70" height="70"></a>
+				</div>
+				<div class="cont">
+					<h3> <a target="_blank"title="{item.shop_name}"href="{item.shop_addr}">{item.shop_name.subByte(30,'...').encode4Html()}</a>&nbsp; <span class="no-valid-txt">认证中</span></h3>
+					<div class="desc">主营：{item.main.subByte(999,'...')}</div>
+					<div class="addr" title="{item.addr_detail}">地址：{item.addr_detail.subByte(999,'...').encode4Html()}</div> <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="{item.shop_addr}">进入店铺</a></div>
+			</div> {else}
+			<div class="list-item{last_class}">
+				<div class="pic">
+					<a target="_blank" href="{item.shop_addr}"><img src="{item.shop_ico}" width="70" height="70"></a>
+				</div>
+				<div class="cont">
+					<h3> <a target="_blank"title="{item.shop_name}"href="{item.shop_addr}">{item.shop_name.subByte(30,'...').encode4Html()}</a>&nbsp; <span class="no-valid-txt">认证中</span></h3>
+					<div class="desc">主营：{item.main.subByte(999,'...')}</div>
+					<div class="addr" title="{item.addr_detail}">地址：{item.addr_detail.subByte(999,'...').encode4Html()}</div> <a class="into-shop-n" target="_blank" hidefocus="true" data-text="进入店铺" href="{item.shop_addr}">进入店铺</a></div>
+			</div> {/if} {/if} {/for}</script>
+			<script type="text/html" id=JsShopListMapModeShopCardTpl>
+				<div class="mode-map">
+					<div class="pop-window">
+						<div class="pop-hd">
+							<h2 class="tit">{$shop_name}</h2>
+							<a href="#" class="shop-card-close" title="关闭"></a>
+						</div>
+						<div class="pop-bd">
+							<p>主营：{$service_tags}</p>
+							<p style="height:40px;">地址：{$addr}</p>
+							<p class="into-shop"><span class="icon icon-house"></span> <a href="{$shop_addr}" target="_blank">进入店铺&gt;&gt;</a></p>
+							<p class="im-shop"><a href="#{$qid}" class="btn btn-green qim-go-talk" data-id="{$qid}">{$online_txt}</a></p>
+							<div class="arr"></div>
+						</div>
+					</div>
+				</div>
+			</script>
+			<script type="text/html" id=JsShopListMapModeTpl>
+				<div id="mode_map" class="map-container-wrap">
+					<div id="maprecommendTips" class="recomm-dianpu" style="height:43px;display:none">
+						<p style="color:#666;padding-top:5px;">抱歉，此区域暂无商家。</p>
+						<p style="color:red;">为您找到以下和您相同城市的商家</p>
+					</div>
+					<div id="mode_map_container" class="map-container"></div>
+					<div id="merRepairMapPager" class="pagination">
+						<p class="pages"></p>
+					</div>
+				</div>
+			</script>
+		</div>
+		<div class="col-right cnt-right">
+			<div class="haoping-list">
+				<h3 class=tit>商家好评榜</h3>
+				<div class="cont-list">
+					<div class="cont-list-item">
+						<div class="s-num s-num-red">&#9312</div>
+						<div class=pic>
+							<a target=_blank href="http://39246970.bang.360.cn/?from=index_bangcomm"><img src="images/t01d069a31e337772f6.gif" width=32 height=32></a>
+						</div>
+						<div class="cont ie6cont">
+							<h3><a target=_blank href="http://39246970.bang.360.cn/?from=index_bangcomm" title="大连无忧科技有限公司">大连无忧科技有限公司</a></h3>
+							<p>2364条评论</p>
+						</div>
+					</div>
+					<div class="cont-list-item">
+						<div class="s-num s-num-red">&#9313</div>
+						<div class=pic>
+							<a target=_blank href="http://16175605.bang.360.cn/?from=index_bangcomm"><img src="images/t01d069a31e337772f6.gif" width=32 height=32></a>
+						</div>
+						<div class="cont ie6cont">
+							<h3><a target=_blank href="http://16175605.bang.360.cn/?from=index_bangcomm" title="大连松杨电脑维修中心">大连松杨电脑维修中心</a></h3>
+							<p>470条评论</p>
+						</div>
+					</div>
+					<div class="cont-list-item">
+						<div class="s-num s-num-red">&#9314</div>
+						<div class=pic>
+							<a target=_blank href="http://1575673305.bang.360.cn/?from=index_bangcomm"><img src="images/t01a6a34e9214c722a9.jpg" width=32 height=32></a>
+						</div>
+						<div class="cont ie6cont">
+							<h3><a target=_blank href="http://1575673305.bang.360.cn/?from=index_bangcomm" title="欣杰电脑">欣杰电脑</a></h3>
+							<p>402条评论</p>
+						</div>
+					</div>
+					<div class="cont-list-item">
+						<div class="s-num ">&#9315</div>
+						<div class=pic>
+							<a target=_blank href="http://2889353.bang.360.cn/?from=index_bangcomm"><img src="http://p2.qhimg.com/edr/140__140/ss/30_105/t01d393b539d5466914.gif" width=32 height=32></a>
+						</div>
+						<div class="cont ie6cont">
+							<h3><a target=_blank href="http://2889353.bang.360.cn/?from=index_bangcomm" title="鋐蕴电脑维修">鋐蕴电脑维修</a></h3>
+							<p>312条评论</p>
+						</div>
+					</div>
+					<div class="cont-list-item">
+						<div class="s-num ">&#9316</div>
+						<div class=pic>
+							<a target=_blank href="http://1566956965.bang.360.cn/?from=index_bangcomm"><img src="images/t015f3ff41996f6027b.jpg" width=32 height=32></a>
+						</div>
+						<div class="cont ie6cont">
+							<h3><a target=_blank href="http://1566956965.bang.360.cn/?from=index_bangcomm" title="大宇科技">大宇科技</a></h3>
+							<p>230条评论</p>
+						</div>
+					</div>
+					<div class="cont-list-item">
+						<div class="s-num ">&#9317</div>
+						<div class=pic>
+							<a target=_blank href="http://32682011.bang.360.cn/?from=index_bangcomm"><img src="images/t01f3c01616953d224d.jpg" width=32 height=32></a>
+						</div>
+						<div class="cont ie6cont">
+							<h3><a target=_blank href="http://32682011.bang.360.cn/?from=index_bangcomm" title="大连经济技术开发区昌临大厦持坤数码产品店">大连经济技术开发区昌临大厦持坤数码产品店</a></h3>
+							<p>205条评论</p>
+						</div>
+					</div>
+					<div class="cont-list-item">
+						<div class="s-num ">&#9318</div>
+						<div class=pic>
+							<a target=_blank href="http://1561867640.bang.360.cn/?from=index_bangcomm"><img src="images/t01d5e9cb042a50ba24.jpg" width=32 height=32></a>
+						</div>
+						<div class="cont ie6cont">
+							<h3><a target=_blank href="http://1561867640.bang.360.cn/?from=index_bangcomm" title="大连泉水区域维修电脑">大连泉水区域维修电脑</a></h3>
+							<p>184条评论</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	<div class="js-float-card-fixed float-card-fixed-wrap5">
+		<div class="float-card-fixed-inner">
+			<div class="right-service pngfix"> <a class="right-service-btn">&nbsp;</a></div>
+		</div>
+	</div>
+	<div id=questionContent style="display:none">
+		<div class="question-pop">
+			<h2>常见问题</h2>
+			<div class="q-item">
+				<h3>更换的是否是原厂配件？</h3>
+				<p>我们为您更换的所有配件，均由专门生产苹果配件的代工厂生产，经过<em>360同城帮严格检测</em>，在使用性能方面<em>媲美原厂配件</em>。</p>
+			</div>
+			<div class="q-item">
+				<h3>配件是否有保修？</h3>
+				<p>360同城帮的认证配件均提供<em>1年售后保修服务</em>，出现任何质量问题，均可为您无理由免费更换。</p>
+			</div>
+			<div class="q-item">
+				<h3>哪些地方能上门？上门另收费么？</h3>
+				<p>目前在<em>北京、成都、青岛</em>的城区均可提供免费上门维修服务，不收取上门费。部分远郊区县（如北京六环外等）会额外收取100元上门费。详情可咨询客服电话<em>4000-399-360</em>。</p>
+			</div>
+			<div class="q-item">
+				<h3>其它城市怎么邮寄？快递费谁出？</h3>
+				<p>请寄到以下地址：
+					<br> 四川省成都市武侯区一环路南二段17号A世界701室 同城帮成都分站，邮编610044，
+					<br> 张小姐收，电话028-87018133
+					<br> <em>发顺丰快递到付即可，往返快递费用均由我们承担</em>。 </p>
+			</div>
+		</div>
+	</div>
+	<div class="doc-ft" id="doc-footer">
+		<div class="footer-nav">
+			<table class="f-nav-box">
+				<tr>
+					<td> <span class="icon icon-buy pngfix f-i-left"></span>
+						<div class="f-i-right">
+							<h3>购物指南</h3> <a href="http://bang.360.cn/c/help/#cont4" target=_blank>购物流程</a> <a href="http://bang.360.cn/c/help/#cont11" target=_blank>用户注册</a> <a href="http://bang.360.cn//c/help/#cont27" target=_blank>帮助文档</a> </div>
+					</td>
+					<td> <span class="icon icon-pay pngfix f-i-left"></span>
+						<div class="f-i-right">
+							<h3>支付方式</h3> <a href="http://bang.360.cn/c/help/#cont5" target=_blank>在线支付</a> <a href="http://bang.360.cn/c/help/#cont5" target=_blank>当面付款</a></div>
+					</td>
+					<td> <span class="icon icon-service pngfix f-i-left"></span>
+						<div class="f-i-right">
+							<h3>售后服务</h3> <a href="http://bang.360.cn/c/help/#cont6" target=_blank>投诉建议</a> </div>
+					</td>
+					<td> <span class="icon icon-protect pngfix f-i-left"></span>
+						<div class="f-i-right">
+							<h3>特色保障</h3> <a href="http://bang.360.cn/c/help/#cont1" target=_blank>360担保支付</a> </div>
+					</td>
+					<td> <span class="icon icon-company pngfix f-i-left"></span>
+						<div class="f-i-right">
+							<h3>商家合作</h3> <a class="js-btn-join-tcb" href="#" style="color:#239BF8;margin-bottom:10px">加盟同城帮</a> </div>
+					</td>
+			</table>
+		</div>
+		<div class="copyright-info">
+			<p class=link> <span class=item style="padding:0 10px">客服电话：4000-399-360</span> <a class="item doc-topbar-tousujianyi" style="padding:0 0 0 10px" href="#">投诉建议</a> <a href="http://bang.360.cn/site/map/" target=_blank>网站地图</a></p>
+			<p>Copyright &copy; 2005-2016&nbsp;&nbsp;360.CN&nbsp;&nbsp;All Rights Reserved&nbsp;&nbsp;360安全中心</p>
+			<p><a href="http://www.miibeian.gov.cn/" target=_blank>京ICP备08010314号-19</a>&nbsp;&nbsp;&nbsp;&nbsp;京公网安备110000000006号</p>
+		</div>
+	</div>
+	<script id=JSJoinTCBIntroTpl type="text/html">
+		<div class="join-tcb-wrap">
+			<h3>城市代理</h3>
+			<p>同城帮诚招各地区城市代理，负责该城市统一、规范、专业手机回收维修服务。同城帮提供配套装备、培训享有该城市管辖区域内的唯一性。全权负责该省、市范围内全部业务。具体情况工作人员予以说明</p>
+			<p>加盟要求</p>
+			<ul>
+				<li>1. 提供身份证、营业执照</li>
+				<li>2. 有手机回收、维修经验的团队优先</li>
+				<li>3. 能深化开放当地市场有合作资源优先</li>
+				<li>4. 需缴纳业务保证金</li>
+				<li>5. 签署合作协议</li>
+			</ul>
+			<p>加盟支持</p>
+			<ul>
+				<li>1. 免费培训回收及推广专业知识</li>
+				<li>2. 业务技术支持</li>
+				<li>3. 活动物料支持</li>
+				<li>4. 活动广告经费支持</li>
+			</ul>
+			<p>如您的团队符合上述要求，请将您的所在城市、公司介绍、联系方式发送至qudao@bang.360.cn</p>
+		</div>
+	</script>
+	<script type="text/html" id=JsCityPanelTpl>
+		<div id="{$_id}" class="pop_city" style="display:none">
+			<!--[if lt IE 7 ]><iframe src="about:blank"frameborder="0"></iframe><![endif]-->
+			<div class="radius_top"></div>
+			<div class="cont">
+				<h3> 城市列表 <span title="关闭"class="close city_close"></span></h3>
+				<div class="city_list">
+					<ul>
+						<li>
+							<h4>热门</h4>
+							<p> {for(var i=0; i
+								<$hotcity.length; i++)} {js var item=$hotcity[i]} <a href="#" data-citycode="{item.code}" data-cityid="{item.cityid}">{item.name}</a> {/for} </p>
+						</li>
+						<li>
+							<h4>拼音</h4>
+							<div class="filter_bar"> {for(var i=0; i
+								<$letter.length; i++)} {js var item=$letter[i]} <a href="#" {if(i==0)} class="current" {/if}>{item}</a> {/for} </div>
+							<div class="city_wrap"> {for(var i=0; i
+								<$citylist.length; i++)} {js var sub_list=$citylist[i]} <p class="{$letter[i]}" data-letter="{$letter[i]}" style="{if(i==0)}display:block;{else}display:none;{/if}"> {for(var ii=0; ii
+									<sub_list.length; ii++)} {js var item=sub_list[ii]} <a href="#" data-citycode="{item.code}" data-cityid="{item.cityid}">{item.name}</a> {/for} </p> {/for} </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="radius_bottom"></div>
+		</div>
+	</script>
+	<script type="text/html" id=JsMyorderEnterQrcodeTpl>
+		<div class="myorder-qrcode"><img src="images/t01779ff2be52031b3f.png"></div>
+		<div class="myorder-qrcode-txt">使用微信扫描二维码查看订单</div>
+	</script>
+	<script>
+		document.domain = '360.cn';
+		var MER_BASE_INFO = {},
+			USER_BASE_INFO = {},
+			BASE_ROOT = "http:\/\/bang.360.cn\/";
+	</script>
+	<!--[if IE 6]><script src="https://s.ssl.qhres.com/static/f54f2caa703115b3/lib/dd_belatedpng.js" ></script><script>DD_belatedPNG.fix(".pngfix")</script><![endif]-->
+	<script src="js/116.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/5.0.3.js"></script>
+	<script src="js/global.js"></script>
+	<script charset="utf-8" src="http://webapi.amap.com/maps?v=1.3&key=fceb9f8df9c557673d762dc3b9a5ca6c"></script>
+	<script>
+		var cur_citycode = "da_lian",
+			cid = "40",
+			tag = "";
+		//由于搜索需要根据cid来，但是在店铺页和详情页都不能选择城市，所以将cid记录在cookie里面，保存时间一个月
+		QW.Cookie.set('cid', cid, {
+			'expires': 30 * 24 * 3600 * 1000,
+			'domain': '.bang.360.cn'
+		});
+	</script>
+	<script src="js/index2.js"></script>
+	<div id="StatisticWrap" style="height:0;overflow:hidden;width:0">
+		<script>
+			setTimeout(function() {
+				var e = "https:" == document.location.protocol ? "https://" : "http://",
+					t = document.createElement("script"),
+					n = document.createElement("span"),
+					r = document.getElementById("StatisticWrap");
+				n.id = "cnzz_stat_icon_" + _czc_account_id, r.appendChild(n), t.src = e + "s4.cnzz.com/z_stat.php?async=1&id=" + _czc_account_id, r.appendChild(t)
+			}, 0)
+		</script><span id="cnzz_stat_icon_1259008268"><a href="http://www.cnzz.com/stat/website.php?web_id=1259008268" target="_blank" title="站长统计">站长统计</a></span>
+		<script src="http://s4.cnzz.com/z_stat.php?async=1&amp;id=1259008268"></script>
+	</div>
+	<div id="aMapContainer6886" class="amap-container" style="display: none; position: relative; background-color: rgb(252, 249, 242);">
+		<object style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;" type="text/html" data="about:blank"></object>
+		<div class="amap-maps">
+			<div class="amap-drags">
+				<div class="amap-layers" style="transform: translateZ(0px);">
+					<canvas width="0" height="0" style="position: absolute; z-index: 99; height: 0px; width: 0px; top: 0px; left: 0px;"></canvas>
+					<div style="position: absolute; z-index: 120; top: 0px; left: 0px;"></div>
+				</div>
+				<div class="amap-overlays"></div>
+			</div>
+		</div>
+		<div style="display: none;"></div>
+		<div class="amap-controls"></div>
+		<a class="amap-logo" href="http://gaode.com" target="_blank"><img src="http://webapi.amap.com/theme/v1.3/autonavi.png"></a>
+		<div class="amap-copyright" style="display: none;">
+			<!--v1.3.21-->© 2016 AutoNavi <span class="amap-mcode">- GS(2016)710号</span></div>
+	</div>
+	<div class="ui-addrsug-suglist" style="display: none; z-index: 999; position: absolute; width: 468px; left: 375.5px; top: 1489px;"></div>
+	<div class="ui-addrsug-defsug" style="display: none; z-index: 999; position: absolute; width: 468px; left: 375.5px; top: 1489px;">
+		<div class="ui-addrsug-defitem">可以搜索您所在的小区、写字楼或标志性建筑</div>
+	</div>
+	<div id="JsCityList" class="pop_city" style="opacity: 1; left: 115.05078125px; top: 26px; display: none;">
+		<!--[if lt IE 7 ]>
+		<iframe src="about:blank"frameborder="0"></iframe><![endif]-->
+		<div class="radius_top"></div>
+		<div class="cont">
+			<h3> 城市列表 <span title="关闭" class="close city_close" id="close_city"></span></h3>
+			<div class="city_list">
+				<!--<ul>
+					<li>
+						<h4>热门</h4>
+						<p> <a href="#" data-citycode="bei_jing" data-cityid="7">北京</a> <a href="#" data-citycode="shang_hai" data-cityid="182">上海</a> <a href="#" data-citycode="guang_zhou" data-cityid="63">广州</a> <a href="#" data-citycode="tian_jin" data-cityid="210">天津</a>							<a href="#" data-citycode="xi_an" data-cityid="234">西安</a> <a href="#" data-citycode="shen_zhen" data-cityid="183">深圳</a> <a href="#" data-citycode="wu_han" data-cityid="222">武汉</a> <a href="#" data-citycode="cheng_du" data-cityid="21">成都</a>
+							<a href="#" data-citycode="chong_qing" data-cityid="22">重庆</a> <a href="#" data-citycode="nan_jing" data-cityid="154">南京</a> <a href="#" data-citycode="shen_yang" data-cityid="184">沈阳</a> <a href="#" data-citycode="hang_zhou" data-cityid="70">杭州</a>							<a href="#" data-citycode="ji_nan" data-cityid="99">济南</a> <a href="#" data-citycode="zheng_zhou" data-cityid="277">郑州</a> <a href="#" data-citycode="qing_dao" data-cityid="172">青岛</a> <a href="#" data-citycode="su_zhou" data-cityid="185">苏州</a>							</p>
+					</li>
+					<li>
+						<h4>拼音</h4>
+						<div class="filter_bar"> <a href="#" class="current">A</a> <a href="#">B</a> <a href="#">C</a> <a href="#">D</a> <a href="#">E</a> <a href="#">F</a> <a href="#">G</a> <a href="#">H</a> <a href="#">J</a> <a href="#">K</a> <a href="#">L</a> <a href="#">M</a> <a href="#">N</a>							<a href="#">P</a> <a href="#">Q</a> <a href="#">R</a> <a href="#">S</a> <a href="#">T</a> <a href="#">W</a> <a href="#">X</a> <a href="#">Y</a> <a href="#">Z</a> </div>
+						<div class="city_wrap">
+							<p class="A" data-letter="A" style="display:block;"> <a href="#" data-citycode="an_yang" data-cityid="">安阳</a> <a href="#" data-citycode="an_qing" data-cityid="">安庆</a> <a href="#" data-citycode="an_kang" data-cityid="">安康</a> <a href="#" data-citycode="a_ke_su" data-cityid="">阿克苏</a> <a href="#"
+								data-citycode="aletai" data-cityid="">阿勒泰</a> <a href="#" data-citycode="anshan" data-cityid="">鞍山</a> <a href="#" data-citycode="an_xi" data-cityid="">安西</a> <a href="#" data-citycode="an_shun" data-cityid="">安顺</a> <a href="#" data-citycode="a_li"
+								data-cityid="">阿里地区</a> <a href="#" data-citycode="a_la_shan_meng" data-cityid="">阿拉善盟</a> <a href="#" data-citycode="a_ba" data-cityid="">阿坝</a> </p>
+							<p class="B" data-letter="B" style="display:none;"> <a href="#" data-citycode="bei_jing" data-cityid="">北京</a> <a href="#" data-citycode="bao_ding" data-cityid="">保定</a> <a href="#" data-citycode="bao_tou" data-cityid="">包头</a> <a href="#" data-citycode="beng_bu" data-cityid="">蚌埠</a> <a href="#"
+								data-citycode="bao_ji" data-cityid="">宝鸡</a> <a href="#" data-citycode="bei_hai" data-cityid="">北海</a> <a href="#" data-citycode="bin_zhou" data-cityid="">滨州</a> <a href="#" data-citycode="ben_xi" data-cityid="">本溪</a> <a href="#" data-citycode="ba_yin_guo_le"
+								data-cityid="">巴音郭楞</a> <a href="#" data-citycode="bao_shan" data-cityid="">保山</a> <a href="#" data-citycode="bo_zhou" data-cityid="">亳州</a> <a href="#" data-citycode="bai_shan" data-cityid="">白山</a> <a href="#" data-citycode="bai_se" data-cityid="">百色</a>								<a href="#" data-citycode="bai_cheng" data-cityid="">白城</a> <a href="#" data-citycode="bazhong" data-cityid="">巴中</a> <a href="#" data-citycode="baiyin" data-cityid="">白银</a> <a href="#" data-citycode="bijie" data-cityid="">毕节</a> <a href="#"
+								data-citycode="bayannaoer" data-cityid="">巴彦淖尔</a> <a href="#" data-citycode="bo_er_ta_la_meng_gu" data-cityid="">博尔塔拉蒙古</a> <a href="#" data-citycode="baisha_lizu" data-cityid="">白沙黎族自治县</a> </p>
+							<p class="C" data-letter="C" style="display:none;">
+								<a href="#" data-citycode="cheng_du" data-cityid="">成都</a> <a href="#" data-citycode="chong_qing" data-cityid="">重庆</a> <a href="#" data-citycode="chang_sha" data-cityid="">长沙</a> <a href="#" data-citycode="chang_chun" data-cityid="">长春</a>
+								<a href="#" data-citycode="chang_zhou" data-cityid="">常州</a> <a href="#" data-citycode="cang_zhou" data-cityid="">沧州</a> <a href="#" data-citycode="chang_de" data-cityid="">常德</a> <a href="#" data-citycode="chang_shu" data-cityid="">常熟</a>
+								<a href="#" data-citycode="chao_zhou" data-cityid="">潮州</a> <a href="#" data-citycode="chao_hu" data-cityid="">巢湖</a> <a href="#" data-citycode="chen_zhou" data-cityid="">郴州</a> <a href="#" data-citycode="chu_zhou" data-cityid="">滁州</a> <a href="#"
+								data-citycode="cheng_de" data-cityid="">承德</a> <a href="#" data-citycode="chi_feng" data-cityid="">赤峰</a> <a href="#" data-citycode="chang_zhi" data-cityid="">长治</a> <a href="#" data-citycode="chi_zhou" data-cityid="">池州</a> <a href="#" data-citycode="chu_xiong"
+								data-cityid="">楚雄</a> <a href="#" data-citycode="chang_ji" data-cityid="">昌吉</a> <a href="#" data-citycode="chao_yang" data-cityid="">朝阳</a> <a href="#" data-citycode="chong_zuo" data-cityid="">崇左</a> </p>
+							<p class="D" data-letter="D" style="display:none;"> <a href="#" data-citycode="da_lian" data-cityid="">大连</a> <a href="#" data-citycode="dong_guan" data-cityid="">东莞</a> <a href="#" data-citycode="dong_ying" data-cityid="">东营</a> <a href="#" data-citycode="de_zhou" data-cityid="">德州</a> <a href="#"
+								data-citycode="da_qing" data-cityid="">大庆</a> <a href="#" data-citycode="de_yang" data-cityid="">德阳</a> <a href="#" data-citycode="da_tong" data-cityid="">大同</a> <a href="#" data-citycode="dan_dong" data-cityid="">丹东</a> <a href="#" data-citycode="dan_yang"
+								data-cityid="">丹阳</a> <a href="#" data-citycode="da_li" data-cityid="">大理</a> <a href="#" data-citycode="da_zhou" data-cityid="">达州</a> <a href="#" data-citycode="dong_yang" data-cityid="">东阳</a> <a href="#" data-citycode="dehong" data-cityid="">德宏</a>								<a href="#" data-citycode="dongxing" data-cityid="">东兴</a> <a href="#" data-citycode="dong_fang" data-cityid="">东方</a> <a href="#" data-citycode="dan_zhou" data-cityid="">儋州</a> <a href="#" data-citycode="duyun" data-cityid="">都匀</a> <a href="#"
+								data-citycode="dingxi" data-cityid="">定西</a> </p>
+							<p class="E" data-letter="E" style="display:none;"> <a href="#" data-citycode="e_zhou" data-cityid="">鄂州</a> <a href="#" data-citycode="e_er_duo_si" data-cityid="">鄂尔多斯</a> <a href="#" data-citycode="e_mei_shan" data-cityid="">峨眉山</a> <a href="#" data-citycode="enshi" data-cityid="">恩施</a> </p>
+							<p class="F" data-letter="F" style="display:none;"> <a href="#" data-citycode="fu_zhou" data-cityid="">福州</a> <a href="#" data-citycode="fo_shan" data-cityid="">佛山</a> <a href="#" data-citycode="fu_shun" data-cityid="">抚顺</a> <a href="#" data-citycode="fu_yang" data-cityid="">阜阳</a> <a href="#"
+								data-citycode="fu_xin" data-cityid="">阜新</a> <a href="#" data-citycode="fu_zhou_" data-cityid="">抚州</a> <a href="#" data-citycode="fang_cheng_gang" data-cityid="">防城港</a> </p>
+							<p class="G" data-letter="G" style="display:none;"> <a href="#" data-citycode="guang_zhou" data-cityid="">广州</a> <a href="#" data-citycode="gui_yang" data-cityid="">贵阳</a> <a href="#" data-citycode="gui_lin" data-cityid="">桂林</a> <a href="#" data-citycode="gan_zhou" data-cityid="">赣州</a> <a href="#"
+								data-citycode="gui_gang" data-cityid="">贵港</a> <a href="#" data-citycode="guang_yuan" data-cityid="">广元</a> <a href="#" data-citycode="guang_an" data-cityid="">广安</a> <a href="#" data-citycode="gu_yuan" data-cityid="">固原</a> <a href="#" data-citycode="gan_zi"
+								data-cityid="">甘孜</a> </p>
+							<p class="H" data-letter="H" style="display:none;"> <a href="#" data-citycode="hang_zhou" data-cityid="">杭州</a> <a href="#" data-citycode="he_fei" data-cityid="">合肥</a> <a href="#" data-citycode="ha_er_bin" data-cityid="">哈尔滨</a> <a href="#" data-citycode="hai_kou" data-cityid="">海口</a> <a href="#"
+								data-citycode="han_dan" data-cityid="">邯郸</a> <a href="#" data-citycode="hui_zhou" data-cityid="">惠州</a> <a href="#" data-citycode="hu_he_hao_te" data-cityid="">呼和浩特</a> <a href="#" data-citycode="hu_zhou" data-cityid="">湖州</a> <a href="#" data-citycode="huai_an"
+								data-cityid="">淮安</a> <a href="#" data-citycode="heng_yang" data-cityid="">衡阳</a> <a href="#" data-citycode="huai_nan" data-cityid="">淮南</a> <a href="#" data-citycode="heng_shui" data-cityid="">衡水</a> <a href="#" data-citycode="huai_bei" data-cityid="">淮北</a>								<a href="#" data-citycode="he_ze" data-cityid="">菏泽</a> <a href="#" data-citycode="huang_shi" data-cityid="">黄石</a> <a href="#" data-citycode="he_yuan" data-cityid="">河源</a> <a href="#" data-citycode="hu_lu_dao" data-cityid="">葫芦岛</a> <a href="#"
+								data-citycode="huang_shan" data-cityid="">黄山</a> <a href="#" data-citycode="huang_guang" data-cityid="">黄冈</a> <a href="#" data-citycode="huai_hua" data-cityid="">怀化</a> <a href="#" data-citycode="han_zhong" data-cityid="">汉中</a> <a href="#" data-citycode="he_bi"
+								data-cityid="">鹤壁</a> <a href="#" data-citycode="hong_he" data-cityid="">红河</a> <a href="#" data-citycode="he_chi" data-cityid="">河池</a> <a href="#" data-citycode="hu_lun_bei_er" data-cityid="">呼伦贝尔</a> <a href="#" data-citycode="hei_he" data-cityid="">黑河</a>								<a href="#" data-citycode="he_gang" data-cityid="">鹤岗</a> <a href="#" data-citycode="hai_ning" data-cityid="">海宁</a> <a href="#" data-citycode="hai_xi" data-cityid="">海西</a> <a href="#" data-citycode="huoqiu" data-cityid="">霍邱</a> <a href="#"
+								data-citycode="hami" data-cityid="">哈密</a> <a href="#" data-citycode="hui_chun" data-cityid="">珲春</a> <a href="#" data-citycode="he_zhou" data-cityid="">贺州</a> <a href="#" data-citycode="hai_dong" data-cityid="">海东</a> </p>
+							<p class="J" data-letter="J" style="display:none;"> <a href="#" data-citycode="ji_nan" data-cityid="">济南</a> <a href="#" data-citycode="ji_ning" data-cityid="">济宁</a> <a href="#" data-citycode="jia_xing" data-cityid="">嘉兴</a> <a href="#" data-citycode="jiang_men" data-cityid="">江门</a> <a href="#"
+								data-citycode="jin_hua" data-cityid="">金华</a> <a href="#" data-citycode="ji_lin" data-cityid="">吉林</a> <a href="#" data-citycode="jin_zhou" data-cityid="">锦州</a> <a href="#" data-citycode="jiao_zuo" data-cityid="">焦作</a> <a href="#" data-citycode="jiu_jiang"
+								data-cityid="">九江</a> <a href="#" data-citycode="jing_zhou" data-cityid="">荆州</a> <a href="#" data-citycode="jin_zhong" data-cityid="">晋中</a> <a href="#" data-citycode="jin_cheng" data-cityid="">晋城</a> <a href="#" data-citycode="jie_yang" data-cityid="">揭阳</a>								<a href="#" data-citycode="jing_de_zhen" data-cityid="">景德镇</a> <a href="#" data-citycode="ji_an" data-cityid="">吉安</a> <a href="#" data-citycode="jia_mu_si" data-cityid="">佳木斯</a> <a href="#" data-citycode="jing_men" data-cityid="">荆门</a>
+								<a href="#" data-citycode="ji_xi" data-cityid="">鸡西</a> <a href="#" data-citycode="jiu_quan" data-cityid="">酒泉</a> <a href="#" data-citycode="jiu_zhai_gou" data-cityid="">九寨沟</a> <a href="#" data-citycode="jiyuan" data-cityid="">济源</a> <a href="#"
+								data-citycode="jiayuguan" data-cityid="">嘉峪关</a> <a href="#" data-citycode="jin_chang" data-cityid="">金昌</a> <a href="#" data-citycode="jian" data-cityid="">集安</a> <a href="#" data-citycode="ji_mo" data-cityid="">即墨</a> <a href="#" data-citycode="jiao_zhou"
+								data-cityid="">胶州</a> </p>
+							<p class="K" data-letter="K" style="display:none;"> <a href="#" data-citycode="kun_ming" data-cityid="">昆明</a> <a href="#" data-citycode="kai_feng" data-cityid="">开封</a> <a href="#" data-citycode="ke_la_ma_yi" data-cityid="">克拉玛依</a> <a href="#" data-citycode="ka_shi" data-cityid="">喀什</a> <a href="#"
+								data-citycode="kun_shan" data-cityid="">昆山</a> </p>
+							<p class="L" data-letter="L" style="display:none;"> <a href="#" data-citycode="luo_yang" data-cityid="">洛阳</a> <a href="#" data-citycode="lan_zhou" data-cityid="">兰州</a> <a href="#" data-citycode="lin_yi" data-cityid="">临沂</a> <a href="#" data-citycode="lang_fang" data-cityid="">廊坊</a> <a href="#"
+								data-citycode="liu_zhou" data-cityid="">柳州</a> <a href="#" data-citycode="lian_yun_gang" data-cityid="">连云港</a> <a href="#" data-citycode="lin_fen" data-cityid="">临汾</a> <a href="#" data-citycode="liao_cheng" data-cityid="">聊城</a> <a href="#"
+								data-citycode="li_shui" data-cityid="">丽水</a> <a href="#" data-citycode="long_yan" data-cityid="">龙岩</a> <a href="#" data-citycode="le_shan" data-cityid="">乐山</a> <a href="#" data-citycode="lai_wu" data-cityid="">莱芜</a> <a href="#" data-citycode="lin_an"
+								data-cityid="">临安</a> <a href="#" data-citycode="li_jiang" data-cityid="">丽江</a> <a href="#" data-citycode="luo_he" data-cityid="">漯河</a> <a href="#" data-citycode="lu_zhou" data-cityid="">泸州</a> <a href="#" data-citycode="lv_liang" data-cityid="">吕梁</a>								<a href="#" data-citycode="liao_yang" data-cityid="">辽阳</a> <a href="#" data-citycode="lou_di" data-cityid="">娄底</a> <a href="#" data-citycode="la_sa" data-cityid="">拉萨</a> <a href="#" data-citycode="liang_shan" data-cityid="">凉山</a> <a href="#"
+								data-citycode="liao_yuan" data-cityid="">辽源</a> <a href="#" data-citycode="liu_an" data-cityid="">六安</a> <a href="#" data-citycode="lechang" data-cityid="">乐昌</a> <a href="#" data-citycode="liupanshui" data-cityid="">六盘水</a> <a href="#" data-citycode="laibin"
+								data-cityid="">来宾</a> <a href="#" data-citycode="long_nan" data-cityid="">陇南</a> <a href="#" data-citycode="ling_shui" data-cityid="">陵水</a> <a href="#" data-citycode="lin_xia_zhou" data-cityid="">临夏州</a> <a href="#" data-citycode="lin_gao" data-cityid="">临高</a>								<a href="#" data-citycode="lin_cang" data-cityid="">临沧</a> <a href="#" data-citycode="lei_yang" data-cityid="">耒阳</a> <a href="#" data-citycode="lai_xi" data-cityid="">莱西</a> </p>
+							<p class="M" data-letter="M" style="display:none;"> <a href="#" data-citycode="mian_yang" data-cityid="">绵阳</a> <a href="#" data-citycode="mu_dan_jiang" data-cityid="">牡丹江</a> <a href="#" data-citycode="ma_an_shan" data-cityid="">马鞍山</a> <a href="#" data-citycode="mao_ming" data-cityid="">茂名</a>								<a href="#" data-citycode="mei_zhou" data-cityid="">梅州</a> <a href="#" data-citycode="mei_shan" data-cityid="">眉山</a> </p>
+							<p class="N" data-letter="N" style="display:none;"> <a href="#" data-citycode="nan_jing" data-cityid="">南京</a> <a href="#" data-citycode="ning_bo" data-cityid="">宁波</a> <a href="#" data-citycode="nan_chang" data-cityid="">南昌</a> <a href="#" data-citycode="nan_ning" data-cityid="">南宁</a> <a href="#"
+								data-citycode="nan_tong" data-cityid="">南通</a> <a href="#" data-citycode="nan_yang" data-cityid="">南阳</a> <a href="#" data-citycode="ning_de" data-cityid="">宁德</a> <a href="#" data-citycode="nan_chong" data-cityid="">南充</a> <a href="#" data-citycode="nan_ping"
+								data-cityid="">南平</a> <a href="#" data-citycode="nei_jiang" data-cityid="">内江</a> <a href="#" data-citycode="nu_jiang" data-cityid="">怒江</a> </p>
+							<p class="P" data-letter="P" style="display:none;"> <a href="#" data-citycode="pu_tian" data-cityid="">莆田</a> <a href="#" data-citycode="ping_xiang" data-cityid="">萍乡</a> <a href="#" data-citycode="ping_ding_shan" data-cityid="">平顶山</a> <a href="#" data-citycode="pan_jin" data-cityid="">盘锦</a>
+								<a href="#" data-citycode="pu_yang" data-cityid="">濮阳</a> <a href="#" data-citycode="pan_zhi_hua" data-cityid="">攀枝花</a> <a href="#" data-citycode="ping_liang" data-cityid="">平凉</a> <a href="#" data-citycode="ping_yao" data-cityid="">平遥</a>
+								<a href="#" data-citycode="pu_er" data-cityid="">普洱</a> <a href="#" data-citycode="ping_du" data-cityid="">平度</a> </p>
+							<p class="Q" data-letter="Q" style="display:none;"> <a href="#" data-citycode="qing_dao" data-cityid="">青岛</a> <a href="#" data-citycode="quan_zhou" data-cityid="">泉州</a> <a href="#" data-citycode="qin_huang_dao" data-cityid="">秦皇岛</a> <a href="#" data-citycode="qi_qi_haer" data-cityid="">齐齐哈尔</a>								<a href="#" data-citycode="qing_yuan" data-cityid="">清远</a> <a href="#" data-citycode="qu_zhou" data-cityid="">衢州</a> <a href="#" data-citycode="qu_jing" data-cityid="">曲靖</a> <a href="#" data-citycode="qin_zhou" data-cityid="">钦州</a> <a href="#"
+								data-citycode="qianjiang" data-cityid="">潜江</a> <a href="#" data-citycode="qiandongnan" data-cityid="">黔东南</a> <a href="#" data-citycode="qingyang" data-cityid="">庆阳</a> <a href="#" data-citycode="qiong_hai" data-cityid="">琼海</a> <a href="#" data-citycode="qian_xi_nan"
+								data-cityid="">黔西南</a> <a href="#" data-citycode="qian_nan_zhou" data-cityid="">黔南州</a> <a href="#" data-citycode="qi_tai_he" data-cityid="">七台河</a> </p>
+							<p class="R" data-letter="R" style="display:none;"> <a href="#" data-citycode="ri_zhao" data-cityid="">日照</a> </p>
+							<p class="S" data-letter="S" style="display:none;"> <a href="#" data-citycode="shang_hai" data-cityid="">上海</a> <a href="#" data-citycode="shen_zhen" data-cityid="">深圳</a> <a href="#" data-citycode="shen_yang" data-cityid="">沈阳</a> <a href="#" data-citycode="su_zhou" data-cityid="">苏州</a> <a href="#"
+								data-citycode="shi_jia_zhuang" data-cityid="">石家庄</a> <a href="#" data-citycode="shao_xing" data-cityid="">绍兴</a> <a href="#" data-citycode="shan_tou" data-cityid="">汕头</a> <a href="#" data-citycode="san_ya" data-cityid="">三亚</a> <a href="#" data-citycode="shao_guan"
+								data-cityid="">韶关</a> <a href="#" data-citycode="shi_yan" data-cityid="">十堰</a> <a href="#" data-citycode="su_qian" data-cityid="">宿迁</a> <a href="#" data-citycode="shang_rao" data-cityid="">上饶</a> <a href="#" data-citycode="san_ming" data-cityid="">三明</a>								<a href="#" data-citycode="san_men_xia" data-cityid="">三门峡</a> <a href="#" data-citycode="shang_qiu" data-cityid="">商丘</a> <a href="#" data-citycode="shan_wei" data-cityid="">汕尾</a> <a href="#" data-citycode="si_ping" data-cityid="">四平</a>
+								<a href="#" data-citycode="shuo_zhou" data-cityid="">朔州</a> <a href="#" data-citycode="su_zhou2" data-cityid="">宿州</a> <a href="#" data-citycode="shao_yang" data-cityid="">邵阳</a> <a href="#" data-citycode="sui_ning" data-cityid="">遂宁</a> <a href="#"
+								data-citycode="shuang_ya_shan" data-cityid="">双鸭山</a> <a href="#" data-citycode="sui_zhou" data-cityid="">随州</a> <a href="#" data-citycode="song_yuan" data-cityid="">松原</a> <a href="#" data-citycode="sui_hua" data-cityid="">绥化</a> <a href="#"
+								data-citycode="shang_luo" data-cityid="">商洛</a> <a href="#" data-citycode="shihezi" data-cityid="">石河子</a> <a href="#" data-citycode="shizuishan" data-cityid="">石嘴山</a> <a href="#" data-citycode="suining" data-cityid="">睢宁</a> </p>
+							<p class="T" data-letter="T" style="display:none;"> <a href="#" data-citycode="tian_jin" data-cityid="">天津</a> <a href="#" data-citycode="tai_yuan" data-cityid="">太原</a> <a href="#" data-citycode="tang_shan" data-cityid="">唐山</a> <a href="#" data-citycode="tai_an" data-cityid="">泰安</a> <a href="#"
+								data-citycode="tai_zhou_2" data-cityid="">泰州</a> <a href="#" data-citycode="tai_zhou_1" data-cityid="">台州</a> <a href="#" data-citycode="tong_ling" data-cityid="">铜陵</a> <a href="#" data-citycode="tie_ling" data-cityid="">铁岭</a> <a href="#" data-citycode="tong_hua"
+								data-cityid="">通化</a> <a href="#" data-citycode="tong_liao" data-cityid="">通辽</a> <a href="#" data-citycode="tian_shui" data-cityid="">天水</a> <a href="#" data-citycode="tongren" data-cityid="">铜仁</a> <a href="#" data-citycode="tun_chang" data-cityid="">屯昌县</a>								<a href="#" data-citycode="tu_lu_fan" data-cityid="">吐鲁番</a> <a href="#" data-citycode="tong_chuan" data-cityid="">铜川</a> <a href="#" data-citycode="tie_li" data-cityid="">铁力</a> <a href="#" data-citycode="tian_men " data-cityid="">天门</a> <a href="#"
+								data-citycode="ta_cheng" data-cityid="">塔城</a> <a href="#" data-citycode="tai_cang" data-cityid="">太仓</a> </p>
+							<p class="W" data-letter="W" style="display:none;"> <a href="#" data-citycode="wu_han" data-cityid="">武汉</a> <a href="#" data-citycode="wu_xi" data-cityid="">无锡</a> <a href="#" data-citycode="wei_fang" data-cityid="">潍坊</a> <a href="#" data-citycode="wen_zhou" data-cityid="">温州</a> <a href="#" data-citycode="wei_hai"
+								data-cityid="">威海</a> <a href="#" data-citycode="wu_hu" data-cityid="">芜湖</a> <a href="#" data-citycode="wu_lu_mu_qi" data-cityid="">乌鲁木齐</a> <a href="#" data-citycode="wei_nan" data-cityid="">渭南</a> <a href="#" data-citycode="wu_zhou" data-cityid="">梧州</a>								<a href="#" data-citycode="wuhai" data-cityid="">乌海</a> <a href="#" data-citycode="wuwei" data-cityid="">武威</a> <a href="#" data-citycode="wulanchabu" data-cityid="">乌兰察布</a> <a href="#" data-citycode="wu_jia_qu" data-cityid="">五家渠</a> <a href="#"
+								data-citycode="wu_zhong" data-cityid="">吴忠</a> <a href="#" data-citycode="wen_shan" data-cityid="">文山</a> <a href="#" data-citycode="wen_chang" data-cityid="">文昌</a> <a href="#" data-citycode="wang_ning" data-cityid="">万宁</a> </p>
+							<p class="X" data-letter="X" style="display:none;"> <a href="#" data-citycode="xi_an" data-cityid="">西安</a> <a href="#" data-citycode="xia_men" data-cityid="">厦门</a> <a href="#" data-citycode="xu_zhou" data-cityid="">徐州</a> <a href="#" data-citycode="xiang_yang" data-cityid="">襄阳</a> <a href="#"
+								data-citycode="xin_xiang" data-cityid="">新乡</a> <a href="#" data-citycode="xian_yang" data-cityid="">咸阳</a> <a href="#" data-citycode="xiang_tan" data-cityid="">湘潭</a> <a href="#" data-citycode="xi_ning" data-cityid="">西宁</a> <a href="#" data-citycode="xing_tai"
+								data-cityid="">邢台</a> <a href="#" data-citycode="xin_yang" data-cityid="">信阳</a> <a href="#" data-citycode="xu_chang" data-cityid="">许昌</a> <a href="#" data-citycode="xiao_gan" data-cityid="">孝感</a> <a href="#" data-citycode="xin_yu" data-cityid="">新余</a>								<a href="#" data-citycode="xin_zhou" data-cityid="">忻州</a> <a href="#" data-citycode="xuan_cheng" data-cityid="">宣城</a> <a href="#" data-citycode="xian_ning" data-cityid="">咸宁</a> <a href="#" data-citycode="xiang_xi" data-cityid="">湘西</a> <a href="#"
+								data-citycode="xishuangbanna" data-cityid="">西双版纳</a> <a href="#" data-citycode="xiantao" data-cityid="">仙桃</a> <a href="#" data-citycode="xinganmeng" data-cityid="">兴安盟</a> <a href="#" data-citycode="xilinguolemeng" data-cityid="">锡林郭勒盟</a>
+								<a href="#" data-citycode="xinjiang_weiwuer" data-cityid="">新疆维吾尔</a> <a href="#" data-citycode="xiang_fan" data-cityid="">襄樊</a> <a href="#" data-citycode="xing_yi" data-cityid="">兴义</a> </p>
+							<p class="Y" data-letter="Y" style="display:none;"> <a href="#" data-citycode="yang_zhou" data-cityid="">扬州</a> <a href="#" data-citycode="yan_tai" data-cityid="">烟台</a> <a href="#" data-citycode="yan_cheng" data-cityid="">盐城</a> <a href="#" data-citycode="yun_cheng" data-cityid="">运城</a> <a href="#"
+								data-citycode="yin_chuan" data-cityid="">银川</a> <a href="#" data-citycode="yi_chang" data-cityid="">宜昌</a> <a href="#" data-citycode="yue_yang" data-cityid="">岳阳</a> <a href="#" data-citycode="ying_kou" data-cityid="">营口</a> <a href="#" data-citycode="yang_jiang"
+								data-cityid="">阳江</a> <a href="#" data-citycode="yun_fu" data-cityid="">云浮</a> <a href="#" data-citycode="yan_ji" data-cityid="">延吉</a> <a href="#" data-citycode="yi_chun" data-cityid="">宜春</a> <a href="#" data-citycode="yu_xi" data-cityid="">玉溪</a>								<a href="#" data-citycode="yu_lin" data-cityid="">玉林</a> <a href="#" data-citycode="yi_bin" data-cityid="">宜宾</a> <a href="#" data-citycode="yi_yang" data-cityid="">益阳</a> <a href="#" data-citycode="yang_quan" data-cityid="">阳泉</a> <a href="#"
+								data-citycode="yi_chun2" data-cityid="">伊春</a> <a href="#" data-citycode="yu_lin_1" data-cityid="">榆林</a> <a href="#" data-citycode="yong_zhou" data-cityid="">永州</a> <a href="#" data-citycode="yi_li" data-cityid="">伊犁</a> <a href="#" data-citycode="yan_an"
+								data-cityid="">延安</a> <a href="#" data-citycode="ya_an" data-cityid="">雅安</a> <a href="#" data-citycode="yanbian" data-cityid="">延边</a> <a href="#" data-citycode="ying_tan" data-cityid="">鹰潭</a> <a href="#" data-citycode="yi_du" data-cityid="">宜都</a>								</p>
+							<p class="Z" data-letter="Z" style="display:none;"> <a href="#" data-citycode="zheng_zhou" data-cityid="">郑州</a> <a href="#" data-citycode="zi_bo" data-cityid="">淄博</a> <a href="#" data-citycode="zhong_shan" data-cityid="">中山</a> <a href="#" data-citycode="zhu_hai" data-cityid="">珠海</a> <a href="#"
+								data-citycode="zhen_jiang" data-cityid="">镇江</a> <a href="#" data-citycode="zhu_zhou" data-cityid="">株洲</a> <a href="#" data-citycode="zhang_zhou" data-cityid="">漳州</a> <a href="#" data-citycode="zhao_qing" data-cityid="">肇庆</a> <a href="#" data-citycode="zhan_jiang"
+								data-cityid="">湛江</a> <a href="#" data-citycode="zhang_jia_kou" data-cityid="">张家口</a> <a href="#" data-citycode="zhou_shan" data-cityid="">舟山</a> <a href="#" data-citycode="zao_zhuang" data-cityid="">枣庄</a> <a href="#" data-citycode="zun_yi"
+								data-cityid="">遵义</a> <a href="#" data-citycode="zhu_ma_dian" data-cityid="">驻马店</a> <a href="#" data-citycode="zhou_kou" data-cityid="">周口</a> <a href="#" data-citycode="zi_gong" data-cityid="">自贡</a> <a href="#" data-citycode="zi_yang" data-cityid="">资阳</a>								<a href="#" data-citycode="zhang_jia_jie" data-cityid="">张家界</a> <a href="#" data-citycode="zhaotong" data-cityid="">昭通</a> <a href="#" data-citycode="zhangye" data-cityid="">张掖</a> <a href="#" data-citycode="zhuozhou" data-cityid="">涿州</a>
+								<a href="#" data-citycode="zhong_xiang" data-cityid="">钟祥</a> <a href="#" data-citycode="zhong_wei" data-cityid="">中卫</a> <a href="#" data-citycode="zhucheng" data-cityid="">诸城</a> <a href="#" data-citycode="zhao_dong" data-cityid="">肇东</a> </p>
+						</div>
+					</li>
+				</ul>-->
+			</div>
+		</div>
+		<div class="radius_bottom"></div>
+	</div>
+
+	<div id=StatisticWrap style="height:0;overflow:hidden;width:0">
+		<script>
+			setTimeout(function() {
+				var e = "https:" == document.location.protocol ? "https://" : "http://",
+					t = document.createElement("script"),
+					n = document.createElement("span"),
+					r = document.getElementById("StatisticWrap");
+				n.id = "cnzz_stat_icon_" + _czc_account_id, r.appendChild(n), t.src = e + "s4.cnzz.com/z_stat.php?async=1&id=" + _czc_account_id, r.appendChild(t)
+			}, 0)
+		</script>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			$("#changeCity").click(function() {
+				$("#JsCityList").css("display", "block");
+			});
+			$("#close_city").click(function() {
+				$("#JsCityList").css("display", "none");
+			});
+		});
+	</script>
+
+</body>
+
+</html>

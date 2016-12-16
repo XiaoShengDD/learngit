@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<!--<link rel="stylesheet" type="text/css" href="css/sunburst.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="css/documentation.css" />-->
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="js/bootstrap-paginator.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--<script src="page2.js" type="text/javascript" charset="utf-8"></script>-->
+
+		<script type="text/javascript">
+			$(function() {
+				$("#login").click(function() {
+					var username = $("#username").val();
+					var password = $("#password").val();
+					$.ajax({
+						type: "post",
+						url: "http://localhost:8888/login",
+						async: true,
+						data: {
+							"username": username,
+							"password": password
+						},
+						success: function(data) {
+							alert(data);
+						},
+						error: function() {
+							console.log('error');
+						}
+					});
+				});
+				$("#registry").click(function() {
+					var username = $("#username").val();
+					var password = $("#password").val();
+					$.ajax({
+						type: "post",
+						url: "http://localhost:8888/registry",
+						async: true,
+						data: {
+							"username": username,
+							"password": password
+						},
+						success: function(data) {
+							alert(data);
+						},
+						error:function(){
+							console.log('err');
+						}
+					});
+				});
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8888/",
+					async: true,
+					success: function(data) {
+						var result;
+						for (i in data) {
+							for (m in data[i]) {
+								result = Math.ceil(data[i][m] / 10);
+							}
+						}
+						$("span").append("共" + data[i][m] + "条记录 ")
+						$("span").append("共" + result + "页");
+						if ($("#pagination")) {
+							var pagecount = data[i][m]; //多少条信息
+							var pagesize = 10; //每页多少条
+							var currentpage = 1; //当前页码
+							function pages(pagecount, pagesize, currentpage) {
+								var pagehtml = "";
+								result = Math.ceil(pagecount / pagesize);
+								if (pagecount <= pagesize) { //只有一页内容  
+									pagehtml = "";
+								}
+								//大于一页内容  
+								if (pagecount > pagesize) {
+									if (currentpage > 1) {
+										pagehtml += '<li id="pageup"><a href="#">上一页</a></li>';
+									}
+									for (var i = 0; i < result; i++) {
+										if (i >= (currentpage - 3) && i < (currentpage + 2) && currentpage < result) {
+											if (i == currentpage - 1) {
+												pagehtml += '<li class="active"><a href="#" class="pages">' + (i + 1) + '</a></li>';
+											} else {
+												pagehtml += '<li><a href="#" class="pages">' + (i + 1) + '</a></li>';
+											}
+										}
+									}
+									if (currentpage < result) {
+										pagehtml += '<li class="pagedown"><a href="#">下一页</a></li>';
+									}
+								}
+								$("#pagination").empty();
+								$("#pagination").html(pagehtml);
+								$(".pagedown").click(function() {
+									currentpage++;
+									pages(pagecount, pagesize, currentpage);
+									request(currentpage);
+								});
+								$("#pageup").click(function() {
+									currentpage--;
+									pages(pagecount, pagesize, currentpage);
+									request(currentpage);
+								})
+								for (m in $(".pages")) {
+									$(".pages:eq(" + m + ")").click(function() {
+										currentpage = parseInt($(this).html());
+										pages(pagecount, pagesize, currentpage);
+										request(currentpage);
+									});
+								}
+							}
+							pages(pagecount, pagesize, currentpage);
+						}
+					}
+				});
+
+				function request(currentpage) {
+					var uri = "http://localhost:8888/user" + currentpage;
+					$.ajax({
+						type: "get",
+						url: uri,
+						async: true,
+						success: function(data) {
+							$("div").empty();
+							for (i in data) {
+								$("div").append(data[i].id + " " + data[i].username + " " + data[i].password + "<br/>");
+							}
+						}
+					});
+				}
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<!--<form method="post">-->
+		username:
+		<input type="text" name="username" id="username" value="scott" />
+		 password:
+		<input type="password" name="password" id="password" value="tiger" />
+		<!--</form>-->
+		<button id="registry">注册</button>
+		<button id="login">登录</button>
+
+		<div>
+			Nothing is impossible for a willing heart.
+		</div>
+		<ul class="pagination" id="pagination"></ul>
+		<span></span>
+	</body>
+
+</html>

@@ -1,0 +1,30 @@
+{"mobile":
+	[
+		{"brand":"苹果"},
+		{"brand":"三星"},
+		{"brand":"小米"},
+		{"brand":"华为"},
+		{"brand":"步步高"},
+		{"brand":"OPPO"},
+		{"brand":"HTC"},
+		{"brand":"魅族"},
+		{"brand":"索尼"},
+		{"brand":"联想"},
+		{"brand":"酷派"},
+		{"brand":"中兴"},
+		{"brand":"诺基亚"},
+		{"brand":"朵唯"},
+		{"brand":"乐视"},
+		{"brand":"LG"},
+		{"brand":"黑莓"},
+		{"brand":"摩托罗拉"},
+		{"brand":"360手机"},
+		{"brand":"微软"},
+		{"brand":"美图秀秀"},
+		{"brand":"一加"},
+		{"brand":"锤子"},
+		{"brand":"金立"},	
+		{"brand":"TCL"},	
+		{"brand":"小辣椒"}
+	]
+}
